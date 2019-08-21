@@ -32,6 +32,10 @@ class TestClient(unittest.TestCase):
         with self.assertRaises(BaseException):
             sqs.receive(sqs=sqs.create_client(), url=invalid_queue_url)
 
+    def test_receive_message_not_raise_exception_with_valid_arguments(self):
+
+        self.assertIsNotNone(sqs.receive(sqs=sqs.create_client(), url="http://localhost/queue/foo"))
+
 
 if __name__ == "__main__":
     unittest.main()
